@@ -5,6 +5,10 @@
     <title>PROJECT DICEBOUND</title>
     <link rel="icon" href="favicon.png" type="image/png">
     <link rel="stylesheet" href="styles.css">
+
+    <link rel="preload" as="image" href="img1.jpg">
+    <link rel="preload" as="image" href="img2.jpg">
+    <link rel="preload" as="image" href="img3.jpg">
 </head>
 <body>
     <div class="banner" id="banner">
@@ -22,6 +26,107 @@
             <li><a href="#"><b>ABOUT US</b></a></li>
         </ul>
     </nav>
-    
+
+    <div class="carousel">
+        <button class="prev">‹</button>
+        <img src="logo.png" class="logo" alt="Logo">
+        <div class="carousel-container">
+            <img src="keyart3.png" loading="eager" alt="Image 3">
+            <img src="keyart4.png" loading="eager" alt="Last Clone">
+            <img src="keyart1.png" loading="eager" alt="Image 1">
+            <img src="keyart2.png" loading="eager" alt="Image 2">
+            <img src="keyart3.png" loading="eager" alt="Image 3">
+            <img src="keyart4.png" loading="eager" alt="Image 4">
+            <img src="keyart1.png" loading="eager" alt="First Clone">
+            <img src="keyart2.png" loading="eager" alt="Image 2">
+        </div>
+        <button class="next">›</button>
+    </div>
+      
+    <div class="text-wrapper">
+        <div class="text-row">
+            <div class="text-blocks">
+                <div class="text-block">
+                    <h1>ROLL DICE!</h1>
+                    <p>This is a basic summary of a major gameplay mechanic in a few sentences.  This will explain in quick and snappy language the basics of how the game plays.</p>
+                    <br>
+                    <h1>FIGHT MONSTERS!</h1>
+                    <p>This is a basic summary of a major gameplay mechanic in a few sentences.  This will explain in quick and snappy language the basics of how the game plays.</p>
+                </div>
+                <div class="text-block">
+                    <h1>GET LOOT!</h1>
+                    <p>This is a basic summary of a major gameplay mechanic in a few sentences.  This will explain in quick and snappy language the basics of how the game plays.</p>
+                    <br>
+                    <h1>USE POWERFUL ITEMS!</h1>
+                    <p>This is a basic summary of a major gameplay mechanic in a few sentences.  This will explain in quick and snappy language the basics of how the game plays.</p>
+                </div>
+            </div>
+            <div class="logo-row">
+                <img src="logo.png" class="logo-bottom" alt="Logo">
+            </div>
+        </div>
+    </div>
+
 </body>
+<script>
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+    const carouselContainer = document.querySelector('.carousel-container');
+    const images = document.querySelectorAll('.carousel-container img');
+
+    let currentIndex = 2;
+    const imageWidth = images[0].clientWidth;
+
+    function updateCarousel(animate = true) {
+        carouselContainer.style.transition = animate ? 'transform 0.3s ease' : 'none';
+        const offset = (carouselContainer.clientWidth - imageWidth) / 2;
+        carouselContainer.style.transform = `translateX(-${(currentIndex * imageWidth) - offset}px)`;
+    }
+
+    let canClick = true;
+
+    function lockInteraction(duration = 300) {
+        canClick = false;
+        setTimeout(() => canClick = true, duration);
+    }
+
+    nextButton.addEventListener('click', () => {
+        if (!canClick || currentIndex >= images.length - 1) return;
+        currentIndex++;
+        updateCarousel();
+        lockInteraction();
+    });
+
+    prevButton.addEventListener('click', () => {
+        if (!canClick || currentIndex <= 1) return;
+        currentIndex--;
+        updateCarousel();
+        lockInteraction();
+    });
+
+    // Handle looping
+    carouselContainer.addEventListener('transitionend', () => {
+        if (images[currentIndex].alt === "First Clone") {
+            currentIndex = 2;
+            updateCarousel(false);
+        }
+        if (images[currentIndex].alt === "Last Clone") {
+            currentIndex = images.length - 3;
+            updateCarousel(false);
+        }
+    });
+
+    // Init
+    window.addEventListener('load', () => {
+        updateCarousel(false);
+    });
+
+    function autoAdvanceImages() {
+        setInterval(() => {
+            nextButton.click();
+        }, 5000);
+    }
+
+    autoAdvanceImages();
+</script>
 </html>
