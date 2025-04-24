@@ -77,9 +77,9 @@ nav {
     top: 70%;
     left: 70%;
     z-index: 10;
-    width: 10vw; /* Adjust as needed */
+    width: 10vw;
     height: auto;
-    pointer-events: none; /* Prevent it from blocking clicks if needed */
+    pointer-events: none;
 }
 
 .carousel-container img {
@@ -150,4 +150,63 @@ button {
 .logo-bottom {
     width: 10vw;
     height: auto;
+}
+
+.form-container {
+    background-color: white;
+    width: 50vw;
+    margin: 7vh auto;
+    padding: 2rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.form-container h2{
+    font-family: 'Arial Black', Gadget, sans-serif;
+    font-size: 3rem;
+    margin-bottom: 0;
+    line-height: 1;
+}
+
+.form-container h4{
+    font-family: 'Arial Black', Gadget, sans-serif;
+    font-size: 1rem;
+    margin-top: 0;
+    line-height: 1;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0;
+    box-sizing: border-box;
+}
+
+.form-container label{
+    margin-bottom: 0;
+    font-family: 'Arial Black', Gadget, sans-serif;
+    color: #3d3e3f;
+}
+
+.form-container button {
+    background-color: #6f757c;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 20vw;
+    position: static;
+    font-family: 'Arial Black', Gadget, sans-serif;
+}
+
+.form-container button:hover {
+    background-color: #3d3e3f;
+}
+
+.form-columns {
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+}
+  
+.form-column {
+    flex: 1;
 }
