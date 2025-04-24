@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EVENT SIGNUP</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="banner" id="banner">
+        <a href="https://store.steampowered.com" class="banner-link" target="_blank">
+            <img src="wishlist.png" alt="Wishlist" class="banner-img left">
+            <img src="wishlist.png" alt="Wishlist" class="banner-img right">
+        </a>
+        <span class="close-btn" onclick="document.getElementById('banner').style.display='none';">&times;</span>
+    </div>
+    
+    <nav>
+        <ul class="nav">
+            <li><a href="DICEBOUND.html"><b>PROJECT DICEBOUND</b></a></li>
+            <li><a href="EVENTSIGNUP.html"><b>TESTING EVENTS</b></a></li>
+            <li><a href="#"><b>ABOUT US</b></a></li>
+        </ul>
+    </nav>
+
+    <div class="form-container">
+        <h2>TEST EVENT SIGN UP</h2>
+        <h4>PLEASE ENTER YOUR INFO BELOW</h4>
+        <form>
+            <div class="form-columns">
+                <div class="form-column">
+                    <label for="name">NAME OR USERNAME</label><br>
+                    <input type="text" id="name" placeholder="NAME OR USERNAME" required><br><br>
+                </div>
+                <div class="form-column">
+                    <label for="email">EMAIL</label><br>
+                    <input type="email" id="email" placeholder="EMAIL" required><br><br>
+                </div>
+            </div>
+            <br><br><button type="submit">SIGN UP</button>
+        </form>
+    </div>
+</body>
+<script>
+    document.querySelector("form").addEventListener("submit", function(event) {
+        const email = document.getElementById("email").value;
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!regex.test(email)) {
+            alert("Please enter a valid email address.");
+            event.preventDefault();
+        }
+    });
+</script>
